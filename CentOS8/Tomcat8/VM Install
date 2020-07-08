@@ -8,8 +8,8 @@ wget -nv --no-cookies "http://mirror.metrocast.net/apache/tomcat/tomcat-8/v8.5.5
 tar -zxf /tmp/tomcat8.tar.gz -C /usr/local/tomcat --strip-components=1
 rm -rf /tmp/tomcat8.tar.gz
 
-vim /usr/local/tomcat8/webapps/manager/META-INF/context.xml
-vim /usr/local/tomcat8/webapps/host-manager/META-INF/context.xml
+vim /usr/local/tomcat/webapps/manager/META-INF/context.xml
+vim /usr/local/tomcat/webapps/host-manager/META-INF/context.xml
 vim /etc/systemd/system/tomcat.service
 
 firewall-cmd --permanent --zone=public --add-port=8080/tcp
