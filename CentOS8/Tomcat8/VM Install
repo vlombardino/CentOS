@@ -4,7 +4,7 @@ mkdir /usr/local/tomcat
 groupadd tomcat
 useradd -M -s /bin/nologin -g tomcat -d /usr/local/tomcat tomcat
 wget -nv --no-cookies "http://mirror.metrocast.net/apache/tomcat/tomcat-8/v8.5.56/bin/apache-tomcat-8.5.56.tar.gz" -O /tmp/tomcat-8.5.56.tar.gz
-tar -zxf /tmp/tomcat8.tar.gz -C /usr/local/tomcat --strip-components=1
+tar -zxf /tmp/tomcat-8.5.56.tar.gz -C /usr/local/tomcat --strip-components=1
 
 #download and replace files (user:admin pass:admin)
 wget -q -nv --no-cookies "https://github.com/vlombardino/CentOS/raw/master/CentOS8/Tomcat8/files/tomcat-users.xml" -O /usr/local/tomcat/conf/tomcat-users.xml
