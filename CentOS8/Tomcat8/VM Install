@@ -3,19 +3,31 @@ yum update -y && yum install -y tar unzip wget vim java-11-openjdk-headless
 mkdir /usr/local/tomcat
 groupadd tomcat
 useradd -M -s /bin/nologin -g tomcat -d /usr/local/tomcat tomcat
-chown -R tomcat:tomcat /usr/local/tomcat
 wget -nv --no-cookies "http://mirror.metrocast.net/apache/tomcat/tomcat-8/v8.5.56/bin/apache-tomcat-8.5.56.tar.gz" -O /tmp/tomcat8.tar.gz
 tar -zxf /tmp/tomcat8.tar.gz -C /usr/local/tomcat --strip-components=1
 rm -rf /tmp/tomcat8.tar.gz
 
-vim /usr/local/tomcat/webapps/manager/META-INF/context.xml
-vim /usr/local/tomcat/webapps/host-manager/META-INF/context.xml
-vim /etc/systemd/system/tomcat.service
+#download and replace files (user:admin pass:admin)
+wget -nv --no-cookies "https://github.com/vlombardino/CentOS/raw/master/CentOS8/Tomcat8/files/tomcat-users.xml" -O /usr/local/tomcat/conf/tomcat-users.xml
+wget -nv --no-cookies "https://github.com/vlombardino/CentOS/raw/master/CentOS8/Tomcat8/files/host-manager-context.xml" -O /usr/local/tomcat/webapps/host-manager/META-INF/context.xml
+wget -nv --no-cookies "https://github.com/vlombardino/CentOS/raw/master/CentOS8/Tomcat8/files/manager-context.xml" -O /usr/local/tomcat/webapps/manager/META-INF/context.xml
+wget -nv --no-cookies "https://github.com/vlombardino/CentOS/raw/master/CentOS8/Tomcat8/files/tomcat.service" -O /etc/systemd/system/tomcat.service
 
-firewall-cmd --permanent --zone=public --add-port=8080/tcp
-firewall-cmd --reload
+#give user tomcat access to tomcat folder
+chown -R tomcat:tomcat /usr/local/tomcat
 
 systemctl daemon-reload
 systemctl enable tomcat
 systemctl start tomcat
+
+#edit if needed
+#vim /usr/local/tomcat/conf/tomcat-users.xml
+#vim /usr/local/tomcat/webapps/manager/META-INF/context.xml
+#vim /usr/local/tomcat/webapps/host-manager/META-INF/context.xml
+#vim /etc/systemd/system/tomcat.service
 #systemctl restart tomcat
+#systemctl status tomcat
+
+#needed if VM or Bare Metal install
+#firewall-cmd --permanent --zone=public --add-port=8080/tcp
+#firewall-cmd --reload
