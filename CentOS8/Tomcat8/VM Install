@@ -16,6 +16,10 @@ wget -nv --no-cookies "https://github.com/vlombardino/CentOS/raw/master/CentOS8/
 #give user tomcat access to tomcat folder
 chown -R tomcat:tomcat /usr/local/tomcat
 
+#needed if VM or Bare Metal install
+firewall-cmd --permanent --zone=public --add-port=8080/tcp
+firewall-cmd --reload
+
 systemctl daemon-reload
 systemctl enable tomcat
 systemctl start tomcat
@@ -27,7 +31,3 @@ systemctl start tomcat
 #vim /etc/systemd/system/tomcat.service
 #systemctl restart tomcat
 #systemctl status tomcat
-
-#needed if VM or Bare Metal install
-#firewall-cmd --permanent --zone=public --add-port=8080/tcp
-#firewall-cmd --reload
