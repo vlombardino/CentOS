@@ -1,5 +1,5 @@
 sudo su
-yum update -y && yum install -y tar unzip wget java-11-openjdk-headless
+yum update -y && yum install -y tar unzip wget vim java-11-openjdk-headless
 mkdir /usr/local/tomcat
 groupadd tomcat
 useradd -M -s /bin/nologin -g tomcat -d /usr/local/tomcat tomcat
