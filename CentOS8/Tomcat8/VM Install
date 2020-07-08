@@ -8,10 +8,10 @@ tar -zxf /tmp/tomcat8.tar.gz -C /usr/local/tomcat --strip-components=1
 rm -rf /tmp/tomcat8.tar.gz
 
 #download and replace files (user:admin pass:admin)
-wget -nv --no-cookies "https://github.com/vlombardino/CentOS/raw/master/CentOS8/Tomcat8/files/tomcat-users.xml" -O /usr/local/tomcat/conf/tomcat-users.xml
-wget -nv --no-cookies "https://github.com/vlombardino/CentOS/raw/master/CentOS8/Tomcat8/files/host-manager-context.xml" -O /usr/local/tomcat/webapps/host-manager/META-INF/context.xml
-wget -nv --no-cookies "https://github.com/vlombardino/CentOS/raw/master/CentOS8/Tomcat8/files/manager-context.xml" -O /usr/local/tomcat/webapps/manager/META-INF/context.xml
-wget -nv --no-cookies "https://github.com/vlombardino/CentOS/raw/master/CentOS8/Tomcat8/files/tomcat.service" -O /etc/systemd/system/tomcat.service
+wget -q -nv --no-cookies "https://github.com/vlombardino/CentOS/raw/master/CentOS8/Tomcat8/files/tomcat-users.xml" -O /usr/local/tomcat/conf/tomcat-users.xml
+wget -q -nv --no-cookies "https://github.com/vlombardino/CentOS/raw/master/CentOS8/Tomcat8/files/host-manager-context.xml" -O /usr/local/tomcat/webapps/host-manager/META-INF/context.xml
+wget -q -nv --no-cookies "https://github.com/vlombardino/CentOS/raw/master/CentOS8/Tomcat8/files/manager-context.xml" -O /usr/local/tomcat/webapps/manager/META-INF/context.xml
+wget -q -nv --no-cookies "https://github.com/vlombardino/CentOS/raw/master/CentOS8/Tomcat8/files/tomcat.service" -O /etc/systemd/system/tomcat.service
 
 #give user tomcat access to tomcat folder
 chown -R tomcat:tomcat /usr/local/tomcat
