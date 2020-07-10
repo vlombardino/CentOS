@@ -26,3 +26,6 @@ firewall-cmd --reload
 systemctl daemon-reload
 systemctl enable tomcat
 systemctl start tomcat
+
+#Optional (Cockpit Install)
+#dnf groupinstall "Headless Management"
